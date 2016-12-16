@@ -1,0 +1,20 @@
+<div class="row">	
+	<br />
+	<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 message_new"> 
+		<div class="col-xs-10 col-xs-push-1">
+			<h3>Contact <%= @user.profile.name %></h3>
+				 <%= form_tag conversations_path, method: :post do %>
+						<%= hidden_field_tag(:user, "#{@user.id}") %>
+					  	<%= hidden_field_tag(:subject, "#{current_user.profile.name} and #{@user.profile.name}") %>
+					  <div>
+					  	<br />
+					 	<%= text_area_tag :body, nil, class: 'text_area' %>
+					 	<br />
+					 </div>
+					 <br />
+					 <%= submit_tag "Send", class: 'btn btn-purple' %> 
+				 <% end %>
+			<br /><br />
+		</div>		 
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row white_background">
+	<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 white_background"> 
+		<br/><br />
+	</div>
+</div>
+<% @conversation.receipts_for(current_user).each do |r| %>
+	<% if r.message.sender.profile.name==current_user.profile.name %>
+	<div class="row white_background">	
+	<div class="col-xs-6 col-xs-push-4 message_receiver"> 					
+			<%= image_tag r.message.sender.profile.image, class: 'message_image' %> 
+			<h5><%= r.message.sender.profile.name %></h5> 
+			<p><%= r.message.body %></p> 
+		</div>
+	</div>	
+	<% else %>
+	<div class="row white_background">	
+		<div class="col-xs-6 col-xs-push-2 message_sender">  				
+			<%= image_tag r.message.sender.profile.image, class: 'message_image' %> 
+			<h5><%= r.message.sender.profile.name %></h5> 
+			<p><%= r.message.body %></p> 
+		</div>
+	</div> 
+	<% end %> 
+	 
+<% end %>
+<div class="row white_background">
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div> 
+<div class="row message_input">	
+		<div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3">
+			<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+				<div>
+					<%= text_area_tag :body, nil, class: 'text_area' %>
+				</div>
+				<br />
+				<%= submit_tag "Send", class: 'btn btn-purple' %> 
+			<% end %> 
+		</div>
+</div>
+<script>
+	window.scroll(0, document.documentElement.scrollHeight)
+</script>

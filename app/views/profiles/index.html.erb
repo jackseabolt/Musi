@@ -1,0 +1,78 @@
+<div class="row index_row">
+  <div class="col-sm-4 col-sm-push-1 index_profile searchbar">
+    <h3><i class="fa fa-search"></i> Search</h3>
+         <%= form_tag profiles_path, :method=> 'get' do %>
+        <div class="form-group">
+          <label for="search_instrument">Instrument</label><br />
+          <%= text_field_tag :search_instrument, params[:search_instrument], class: "form-control searchbar_fields" %>
+          <br />
+          <label for="search_name">Name</label>
+          <br />
+          <%= text_field_tag :search_name, params[:search_name], class: "form-control searchbar_fields" %>
+          <br />
+          <label for="search_city">City</label>
+          <br />
+          <%= text_field_tag :search_city, params[:search_city], class: "form-control searchbar_fields" %>
+          <br />
+          <label for="search_state">State</label>
+          <br />
+          <%= text_field_tag :search_state, params[:search_state], class: "form-control searchbar_fields" %>
+          <br />
+          <%= submit_tag "Search", class: "btn btn-purple2" %>
+        </div>
+      <% end %>
+  </div>
+  <div class='col-sm-8 col-sm-push-0'>
+    <br />
+    <% if current_user.profile.nil? %>
+     <% @profiles.each do |profile| %>
+        <% if profile.status=="Looking" %>
+          <div class="col-sm-12">
+            <a href="/profiles/<%= profile.id %>">
+              <div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2 index_profile">
+                <div class="col-xs-6">
+                    <% if !profile.image.file? %>
+                      <p>No Image</p>
+                  <% else %> 
+                    <%= image_tag profile.image.url(:medium), class: "index_image" %>
+                  <% end %>
+                </div>
+                 <div class="col-xs-6 col-push-6">
+                  <p><b><%= profile.name %></b><br />
+                  <b>Instrument: </b><%= profile.primary_instrument %><br />
+                  <b>Looking For: </b><%= profile.looking_for %><br />
+                  <b>City: </b><%= profile.city %><br />
+                  <b>State: </b><%= profile.state %><br /></p>
+                </div>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %> 
+      <% @users.each do |u| %>
+          <div class="col-sm-12">
+            <a href="/profiles/<%= u.profile.id %>">
+              <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
+                <div class="col-xs-6">
+                  <% if !u.profile.image.file? %>
+                      <p>No Image</p>
+                  <% else %> 
+                    <%= image_tag u.profile.image.url(:medium), class: "index_image" %>
+                  <% end %>
+                </div>
+                <div class="col-xs-6 col-push-6">
+                  <p><b><%= u.profile.name %></b><br />
+                  <b>Instrument: </b><%= u.profile.primary_instrument %><br />
+                  <b>Looking For: </b><%= u.profile.looking_for %><br />
+                  <b>City: </b><%= u.profile.city %><br />
+                  <b>State: </b><%= u.profile.state %><br /></p>
+                </div>
+              </div>
+             </a>    
+          </div>    
+      <% end %>
+    <% end %>
+  </div>
+</div> 
+

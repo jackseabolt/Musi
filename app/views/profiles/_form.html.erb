@@ -1,0 +1,70 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :image, as: :file %>
+  <%= f.input :status, collection: ['Looking', 'Unavailable'] %>
+  <%= f.input :city %>
+  <%= f.input :state, collection: [
+      'Alabama', 
+      'Alaska', 
+      'Arizona',
+      'Arkansas',
+      'California',
+      'Colorado',
+      'Connecticut', 
+      'Delaware', 
+      'District of Columbia', 
+      'Florida', 
+      'Georgia', 
+      'Hawaii', 
+      'Idaho', 
+      'Illinois', 
+      'Indiana', 
+      'Iowa', 
+      'Kansas', 
+      'Kentucky', 
+      'Louisiana', 
+      'Maine', 
+      'Maryland', 
+      'Massachusetts', 
+      'Michigan',
+      'Minnesota', 
+      'Mississippi', 
+      'Missouri', 
+      'Montana', 
+      'Nebraska', 
+      'Nevada', 
+      'New Hampshire', 
+      'New Jersey', 
+      'New Mexico', 
+      'New York', 
+      'North Carolina', 
+      'North Dakota', 
+      'Ohio', 
+      'Oklahoma', 
+      'Oregon', 
+      'Pennsylvania', 
+      'Puerto Rico', 
+      'Rhode Island', 
+      'South Carolina', 
+      'South Dakota', 
+      'Tennessee', 
+      'Texas', 
+      'Utah', 
+      'Vermont', 
+      'Virginia', 
+      'Washington', 
+      'West Virginia',
+      'Wisconsin', 
+      'Wyoming'
+    ], label: "State" %>
+  <%= f.input :primary_instrument, collection: ['Bass','Drums','Guitar','Harmonica','Keyboard','Piano','Violin', 'Other'], label: "Primary Instrument" %>
+  <%= f.input :second_instrument, collection: ['Bass','Drums','Guitar','Harmonica','Keyboard','Piano','Violin', 'Other'], label: "Second Instrument (if applicable)"  %>
+  <%= f.input :third_instrument, collection: ['Bass','Drums','Guitar','Harmonica','Keyboard','Piano', 'Violin', 'Other'], label: "Third Instrument (if applicable)"  %>
+  <%= f.input :looking_for, collection: ['Band', 'Bass','Drums','Guitar','Harmonica','Keyboard','Piano','Violin', 'Other'], label: 'Looking For' %>
+  <%= f.input :years_spent_playing %>
+  <%= f.input :bio, :as => :text, :input_html => {:rows => 5} %>
+  <%= f.button :submit %>
+<% end %>
+
+
