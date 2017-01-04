@@ -273,6 +273,9 @@ nav {
 	text-decoration: none; 
 }
 @media screen and (max-width:767px){
+	.index_image {
+		margin-bottom: 15px;
+	}
 	.logo_big { 
 		width: 200px;
 		margin-left: auto;
