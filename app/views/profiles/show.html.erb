@@ -43,7 +43,7 @@
 		<% if !@profile.audioclip.blank? %>
 			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip %>">
 				<div class="upload_display">
-						<p><%= @profile.audioclip_file_name %></p>
+						<p><%= @profile.audioclip_file_name.first(24) %></p>
 				</div> 
 			</a>
 		<% else %>
@@ -54,7 +54,7 @@
 		<% if !@profile.audioclip2.blank? %>
 			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip2 %>">
 				<div class="upload_display">
-					<p><%= @profile.audioclip2_file_name %></p>
+					<p><%= @profile.audioclip2_file_name.first(24) %></p>
 				</div> 
 			</a>
 		<% else %>
@@ -65,7 +65,7 @@
 		<% if !@profile.audioclip3.blank? %>
 			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip3 %>">
 				<div class="upload_display">
-						<p><%= @profile.audioclip3_file_name %></p>
+						<p><%= @profile.audioclip3_file_name.first(24) %></p>
 				</div> 
 			</a>
 		<% else %>
