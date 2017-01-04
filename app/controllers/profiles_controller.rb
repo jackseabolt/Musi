@@ -178,7 +178,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:audioclip, :audioclip2, :audioclip3,  :years_spent_playing, :user_id, :name, :bio, :age, :city, :state, :primary_instrument, :second_instrument, :third_instrument, :status, :looking_for, :image, :genre => [])
+      params.require(:profile).permit(:audioclip, :audioclip2, :audioclip3, :years_spent_playing, :user_id, :name, :bio, :age, :city, :state, :primary_instrument, :second_instrument, :third_instrument, :status, :looking_for, :image, :genre => [])
     end
 
 end
