@@ -1,8 +1,6 @@
 <div class="row">
 	<div class="col-sm-4 col-sm-push-1 col-xs-10 col-xs-push-1">
-		<h2><%= @profile.name %></h2>
-		<br />
-		<%= image_tag @profile.image.url(:medium), class: "block" %>
+		<%= image_tag @profile.image.url(:medium), class: "block profile_pic" %>
 		<% if !@profile.years_spent_playing.nil? %>
 			<div class="years_spent_playing_container">
 				<p><%= @profile.years_spent_playing %></p>
@@ -22,7 +20,8 @@
 					<%= image_tag @profile.third_instrument_image, class: "instrument_image" %> 
 			</div>	
 		<% end %> 
-		<br /><br />
+		<br />
+		<h3><%= @profile.name %></h3>
 		<p><b>Age: </b><%= @profile.age %></p>
 		<p><b>City: </b><%= @profile.city %></p>
 		<p><b>State: </b><%= @profile.state %></p>
@@ -41,15 +40,39 @@
 	</div>
 	<div class="col-sm-4 col-sm-push-2 col-md-5 col-md-push-2 col-lg-5 col-lg-pus-0 col-xs-10 col-xs-push-1 sidebar">
 		<h3>Uploads</h3>
-		<div class="upload_display">
-			<p>Sample #1</p>
-		</div> 
-		<div class="upload_display">
-			<p>Sample #2</p>
-		</div> 
-		<div class="upload_display">
-			<p>Sample #3</p>
-		</div>
+		<% if !@profile.audioclip.blank? %>
+			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip %>">
+				<div class="upload_display">
+						<p><%= @profile.audioclip_file_name %></p>
+				</div> 
+			</a>
+		<% else %>
+			<div class="upload_display">
+				<p>Sample #1</p>
+			</div> 	
+		<% end %> 
+		<% if !@profile.audioclip2.blank? %>
+			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip2 %>">
+				<div class="upload_display">
+					<p><%= @profile.audioclip2_file_name %></p>
+				</div> 
+			</a>
+		<% else %>
+			<div class="upload_display">
+				<p>Sample #2</p>
+			</div> 	
+		<% end %> 
+		<% if !@profile.audioclip3.blank? %>
+			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip3 %>">
+				<div class="upload_display">
+						<p><%= @profile.audioclip3_file_name %></p>
+				</div> 
+			</a>
+		<% else %>
+			<div class="upload_display">
+				<p>Sample #3</p>
+			</div> 	
+		<% end %> 
 	</div>
 </div>
 

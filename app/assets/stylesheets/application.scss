@@ -30,16 +30,18 @@ body {
   background-size: cover;
 }
 .conversation {
-	background-color: white;
-	opacity: 0.8;
+	background-color: $hover;
 	margin-bottom: 30px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border-radius: 5px; 
-	border: 1px solid #efefef;
+	border: 1p solid $nav;
 	h4 {
-		color: #464646;
+		color: white;
 	}
+}
+.conversation_index_container {
+	margin-bottom: 40px !important; 
 }
 .red {
 	background-color: red; 
@@ -208,6 +210,7 @@ nav {
 }
 .profile_pic	{ 
 	width:100%;
+	margin-top: 82px;
  }
 .searchbar {
 	opacity: 1;

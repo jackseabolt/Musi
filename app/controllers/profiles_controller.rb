@@ -7,8 +7,34 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all.order(updated_at: :desc)
-    @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc)
-    if !current_user.profile.nil?  
+    @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id)
+    if !current_user.profile.nil? 
+    #   if !params[:search_instrument].nil? 
+    #     @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+    #   end
+    #   if !params[:search_name].nil? 
+    #     @users = @users.where("profiles.name LIKE ?", "%#{params[:name]}%")
+    #   end
+    #   if !params[:search_city].nil? 
+    #     @users = @users.where("profiles.city LIKE ?", "%#{params[:city]}%")
+    #   end
+    #   if !params[:search_state].nil? 
+    #     @users = @users.where("profiles.state LIKE ?", "%#{params[:state]}%")
+    #   end
+    # else 
+    #   if !params[:search_instrument].nil? 
+    #     @users = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+    #   end
+    #   if !params[:search_name].nil? 
+    #     @users = @profiles.where("profiles.name LIKE ?", "%#{params[:name]}%")
+    #   end
+    #   if !params[:search_city].nil? 
+    #     @users = @profiles.where("profiles.city LIKE ?", "%#{params[:city]}%")
+    #   end
+    #   if !params[:search_state].nil? 
+    #     @users = @profiles.where("profiles.state LIKE ?", "%#{params[:state]}%")
+    #   end
+
       if !params[:search_instrument].nil? 
         if !params[:search_name].nil?
           if !params[:search_city].nil?
@@ -152,7 +178,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:years_spent_playing, :user_id, :name, :bio, :age, :city, :state, :primary_instrument, :second_instrument, :third_instrument, :status, :looking_for, :image, :genre => [])
+      params.require(:profile).permit(:audioclip, :audioclip2, :audioclip3,  :years_spent_playing, :user_id, :name, :bio, :age, :city, :state, :primary_instrument, :second_instrument, :third_instrument, :status, :looking_for, :image, :genre => [])
     end
 
 end

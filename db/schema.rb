@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213172345) do
+ActiveRecord::Schema.define(version: 20170104000649) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "genres_profiles", id: false, force: :cascade do |t|
-    t.integer  "genre_id"
-    t.integer  "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,8 +77,8 @@ ActiveRecord::Schema.define(version: 20161213172345) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "age"
     t.string   "status"
     t.string   "city"
@@ -103,6 +96,18 @@ ActiveRecord::Schema.define(version: 20161213172345) do
     t.datetime "image_updated_at"
     t.string   "genres"
     t.integer  "years_spent_playing"
+    t.string   "audioclip_file_name"
+    t.string   "audioclip_content_type"
+    t.integer  "audioclip_file_size"
+    t.datetime "audioclip_updated_at"
+    t.string   "audioclip2_file_name"
+    t.string   "audioclip2_content_type"
+    t.integer  "audioclip2_file_size"
+    t.datetime "audioclip2_updated_at"
+    t.string   "audioclip3_file_name"
+    t.string   "audioclip3_content_type"
+    t.integer  "audioclip3_file_size"
+    t.datetime "audioclip3_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

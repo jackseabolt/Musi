@@ -64,7 +64,10 @@
   <%= f.input :looking_for, collection: ['Band', 'Bass','Drums','Guitar','Harmonica','Keyboard','Piano','Violin', 'Other'], label: 'Looking For' %>
   <%= f.input :years_spent_playing %>
   <%= f.input :bio, :as => :text, :input_html => {:rows => 5} %>
-  <%= f.button :submit %>
+  <%= f.input :audioclip, as: :file, label: "Audio Clip" %> 
+  <%= f.input :audioclip2, as: :file, label: "Audio Clip 2" %> 
+  <%= f.input :audioclip3, as: :file, label: "Audio Clip 3" %> 
+  <%= f.button :submit, class: 'btn btn-purple' %>
 <% end %>
 
 
