@@ -292,7 +292,7 @@ nav {
 		border-radius: 0px;
 		border-top: 1px;
 		border: 0px;
-		margin-bottom: 40px !important;
+		margin-bottom: 20px !important;
 		background-color: $hover !important; 
 		.btn {
 			margin-top: 0px !important;
@@ -310,4 +310,7 @@ nav {
 		margin-top: 50px;
 		width:100%;
  	}
+ 	.searchbar {
+		margin-bottom: 10px !important;
+	}
 }
