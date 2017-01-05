@@ -36,7 +36,7 @@
 		<%= link_to "Edit Profile", edit_profile_path(current_user), class: 'btn btn-purple' %> 
 		<br /><br /><br /><br /><br />
 	</div>
-	<div class="col-sm-4 col-sm-push-2 col-md-5 col-md-push-2 col-lg-5 col-lg-pus-0 col-xs-10 col-xs-push-1 sidebar">
+	<div class="col-sm-4 col-sm-push-2 col-md-5 col-md-push-2 col-lg-5 col-xs-10 col-xs-push-1 sidebar">
 		<h3>Uploads</h3>
 		<% if !@profile.audioclip.blank? %>
 			<a rel="alternate" type="application/rss+xml" title="RSS" href="<%= @profile.audioclip %>">

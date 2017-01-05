@@ -210,7 +210,8 @@ nav {
 }
 .profile_pic	{ 
 	width:100%;
-	margin-top: 82px;
+	margin-top: 70px;
+	margin-bottom: 8px;
  }
 .searchbar {
 	opacity: 1;
@@ -235,10 +236,12 @@ nav {
 .sidebar {
 	background-color: $nav !important;
 	position: relative;
-	top: 82px;
+	top: 70px;
 	padding-top: 10px;
 	padding-bottom: 40px;
 	margin-bottom: 40px;
+	padding-left: 30px;
+	padding-right: 30px;
 	h1, h2, h3, h4, h5, h6, p {
 		color: white; 
 		margin:20px;
@@ -256,9 +259,8 @@ nav {
 	background-color: $hover;
 	border-radius: 5px; 
 	padding: 15px;
-	width: 90%;
+	width: 100%;
 	margin-top: 15px;
-	margin-left: 15px;
 }
 .white_background {
 	background-color: white !important;
@@ -296,7 +298,6 @@ nav {
 			margin-top: 0px !important;
 		}	
 	}
-
 	.sidebar {
 		top: 0px;
 	}
@@ -306,6 +307,7 @@ nav {
 		margin-bottom: 15px;
 	}
 	.profile_pic	{ 
+		margin-top: 50px;
 		width:100%;
  	}
 }
