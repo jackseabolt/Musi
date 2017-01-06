@@ -3,23 +3,23 @@
 		<br/><br />
 	</div>
 </div>
-<% @conversation.receipts_for(current_user).each do |r| %>
+<% @conversation.receipts_for(current_user).reverse.each do |r| %>
 	<% if r.message.sender.profile.name==current_user.profile.name %>
 	<div class="row white_background">	
-	<div class="col-xs-6 col-xs-push-4 message_receiver"> 					
-			<%= image_tag r.message.sender.profile.image, class: 'message_image' %> 
-			<h5><%= r.message.sender.profile.name %></h5> 
-			<p><%= r.message.body %></p> 
-		</div>
-	</div>	
+		<div class="col-xs-6 col-xs-push-4 message_receiver"> 					
+				<%= image_tag r.message.sender.profile.image, class: 'message_image' %> 
+				<h5><%= r.message.sender.profile.name %></h5> 
+				<p><%= r.message.body %></p> 
+			</div>
+		</div>	
 	<% else %>
-	<div class="row white_background">	
-		<div class="col-xs-6 col-xs-push-2 message_sender">  				
-			<%= image_tag r.message.sender.profile.image, class: 'message_image' %> 
-			<h5><%= r.message.sender.profile.name %></h5> 
-			<p><%= r.message.body %></p> 
-		</div>
-	</div> 
+		<div class="row white_background">	
+			<div class="col-xs-6 col-xs-push-2 message_sender">  				
+				<%= image_tag r.message.sender.profile.image, class: 'message_image' %> 
+				<h5><%= r.message.sender.profile.name %></h5> 
+				<p><%= r.message.body %></p> 
+			</div>
+		</div> 
 	<% end %> 
 	 
 <% end %>
