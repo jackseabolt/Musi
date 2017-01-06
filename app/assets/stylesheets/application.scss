@@ -119,10 +119,21 @@ a:hover {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border-radius: 5px; 
+	box-shadow: 0px 0px 10px #c0c0c0;
 }
+/*.index_profile {
+	border: 1px solid #aaaaaa;
+	background-color: #7a7a7a;
+	margin-bottom: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 5px; 
+	color: white;
+}*/
 .index_row {
-	margin-top: 20px;
-	margin-bottom: 40px;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	background-color: #dedede;
 }
 .index_image {
 	width: 100%;
