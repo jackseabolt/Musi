@@ -16,13 +16,13 @@ class Profile < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_attached_file :audioclip 
-  validates_attachment_content_type :audioclip, content_type: ['audio/mp3','audio/mpeg']
+  #validates_attachment_content_type :audioclip, content_type: ['audio/mp3','audio/mpeg']
 
   has_attached_file :audioclip2 
-  validates_attachment_content_type :audioclip2, content_type: ['audio/mp3','audio/mpeg']
+  #validates_attachment_content_type :audioclip2, content_type: ['audio/mp3','audio/mpeg']
 
   has_attached_file :audioclip3 
-  validates_attachment_content_type :audioclip3, content_type: ['audio/mp3','audio/mpeg']
+  #validates_attachment_content_type :audioclip3, content_type: ['audio/mp3','audio/mpeg']
 
 
   has_many :genres_profiles
