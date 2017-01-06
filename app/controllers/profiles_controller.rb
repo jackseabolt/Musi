@@ -7,12 +7,12 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     #profiles used for users who lack profiles
-    @profiles = Profile.all.order(updated_at: :desc)
+    @profiles = Profile.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 4)
     #users used for users who have added a profile 
-    @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id)
+      @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id).paginate(:page => params[:page], :per_page => 4) 
   #   if !current_user.profile.nil? 
   #     if !params[:search_instrument].nil? 
-  #       @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+  #        @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
   #     end
   #     if !params[:search_name].nil? 
   #       @users = @users.where("profiles.name LIKE ?", "%#{params[:name]}%")

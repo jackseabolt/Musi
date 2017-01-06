@@ -29,19 +29,58 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.apple_pagination {
+	  background: none;
+	  border: 0px;
+	  text-align: center;
+	  padding: 1em;
+	  cursor: default; 
+	  color: black;
+}
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; 
+    color: black;
+}
+.apple_pagination .disabled {
+    color: black; }
+.apple_pagination .current {
+    color: $nav;
+    font-style: normal;
+    font-weight: bold;
+    background-color: none;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+   }
+.apple_pagination a {
+    text-decoration: none;
+    color: black;
+   }
+.apple_pagination a:hover, .apple_pagination a:focus {
+     color: black;
+     text-decoration: underline; 
+     background: none !important;
+  }
+
 .conversation {
+	opacity: .8;
 	background-color: $hover;
 	margin-bottom: 30px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border-radius: 5px; 
 	border: 1p solid $nav;
+	text-align: center;
 	h4 {
 		color: white;
 	}
 }
-.conversation_index_container {
-	margin-bottom: 40px !important; 
+.spacer {
+	height: 60px !important; 
 }
 .red {
 	background-color: red; 
@@ -128,8 +167,8 @@ a:hover {
 	}
 }
 .messages_background {
-	position: relative;
-	top: -100px;
+	position: relative !important;
+	top: -100px !important;
 }
 .message_image {
 	width: 40px;
@@ -177,9 +216,6 @@ a:hover {
 	width: 100%;
 	bottom: 0px; 
 	z-index: 5px;
-}
-.message_index_text {
-	margin-left: 20px !important;
 }
 .navbar {
 	padding: 10px; 
@@ -280,6 +316,9 @@ nav {
 	color: black !important; 
 	text-decoration: none; 
 }
+.will_paginate:hover {
+	background-color: none !important;
+}
 @media screen and (max-width:767px){
 	.index_image {
 		margin-bottom: 15px;
@@ -289,6 +328,9 @@ nav {
 		margin-left: auto;
 		margin-right: auto;
  	}
+ 	.message_index_text {
+		font-size: 16px;
+	}
  	.profile_pic	{ 
 		width:70%;
  	}

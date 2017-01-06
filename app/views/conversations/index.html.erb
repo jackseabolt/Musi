@@ -4,18 +4,19 @@
 	<br />
     <br />
 </div>
-<% if !@conversation.blank? %>
-	<div class="conversation_index_container">
-		<% @conversations.each do |conversation| %>
-			<a href="conversations/<%= conversation.id %>">
-			<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2 conversation"> 
-				<h4 class="message_index_text"><%= conversation.subject %></h4></a>
-			</div>
-			</a>
-		<% end %> 
-	</div>
-<% else %>
+<% if current_user.mailbox.conversations.blank? %>
 	<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
 		<p><i>No conversations to display</i></p>
 	</div>
 <% end %>
+<% @conversations.each do |conversation| %>
+	<a href="conversations/<%= conversation.id %>">
+	<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2 conversation"> 
+		<h4 class="message_index_text"><%= conversation.subject %></h4></a>
+	</div>
+	</a>
+<% end %> 
+<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2 spacer">
+</div>
+
+
