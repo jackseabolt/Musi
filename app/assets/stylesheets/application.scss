@@ -161,6 +161,9 @@ a:hover {
  	margin-top: 10px;
  	margin-bottom: 10px;
  }
+ .profile_row {
+ 	background-color: #dedede;
+ }
 .years_spent_playing_container {
 	width: 35px;
 	height: 35px;
@@ -169,6 +172,7 @@ a:hover {
 	margin: 10px;
 	display: inline-block;
 	text-align: center;
+	box-shadow: 0px 0px 10px #c0c0c0;
 	p {
 		position: relative;
 		top: 8px;
@@ -263,6 +267,9 @@ nav {
 	width:100%;
 	margin-top: 70px;
 	margin-bottom: 8px;
+	border: opx solid white;
+	border-radius: 5px; 
+	box-shadow: 0px 0px 10px #c0c0c0;
  }
 .searchbar {
 	opacity: 1;
@@ -368,6 +375,9 @@ nav {
 	.profile_pic	{ 
 		margin-top: 50px;
 		width:100%;
+ 	}
+ 	.profile_row {
+ 		background-color: none;
  	}
  	.searchbar {
 		margin-bottom: 10px !important;
