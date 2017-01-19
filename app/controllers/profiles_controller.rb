@@ -10,123 +10,47 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 4)
     #users used for users who have added a profile 
       @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id).paginate(:page => params[:page], :per_page => 4) 
-  #   if !current_user.profile.nil? 
-  #     if !params[:search_instrument].nil? 
-  #        @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
-  #     end
-  #     if !params[:search_name].nil? 
-  #       @users = @users.where("profiles.name LIKE ?", "%#{params[:name]}%")
-  #     end
-  #     if !params[:search_city].nil? 
-  #       @users = @users.where("profiles.city LIKE ?", "%#{params[:city]}%")
-  #     end
-  #     if !params[:search_state].nil? 
-  #       @users = @users.where("profiles.state LIKE ?", "%#{params[:state]}%")
-  #     end
-  #   else 
-  #     if !params[:search_instrument].nil? 
-  #       @profiles = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
-  #     end
-  #     if !params[:search_name].nil? 
-  #       @profiles = @profiles.where("profiles.name LIKE ?", "%#{params[:name]}%")
-  #     end
-  #     if !params[:search_city].nil? 
-  #       @profiles = @profiles.where("profiles.city LIKE ?", "%#{params[:city]}%")
-  #     end
-  #     if !params[:search_state].nil? 
-  #       @profiles = @profiles.where("profiles.state LIKE ?", "%#{params[:state]}%")
-  #     end
-  #   end
-  # end
-  
     if !current_user.profile.nil? 
       if !params[:search_instrument].nil? 
-        if !params[:search_name].nil?
-          if !params[:search_city].nil?
-            if !params[:search_state].nil?
-              @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").where("profiles.state LIKE ?", "%#{params[:search_state]}")
-            else  
-              @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").order(last_sign_in_at: :desc)
-            end
-          else
-            @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").where("profiles.name LIKE ?", "%#{params[:search_name]}%").order(last_sign_in_at: :desc)
-          end
-        else 
-          if !params[:search_city].nil?
-            if !params[:search_state].nil?
-              @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").where("profiles.state LIKE ?", "%#{params[:search_state]}").order(last_sign_in_at: :desc)
-            else  
-              @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").order(last_sign_in_at: :desc)
-            end
-          else
-            if if !params[:search_state].nil?
-              @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").where("profiles.state LIKE ?", "%#{params[:search_state]}%").order(last_sign_in_at: :desc)
-            else 
-              @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%").order(last_sign_in_at: :desc)
-            end          
-          end
-        end
-      end 
-      else
-        if !params[:search_name].nil?
-          if !params[:search_city].nil?
-            if !params[:search_state].nil?
-              @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").where("profiles.state LIKE ?", "%#{params[:search_state]}").order(last_sign_in_at: :desc)
-            else  
-              @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").order(last_sign_in_at: :desc)
-            end
-          else
-            if !params[:search_city].nil?
-              if !params[:search_state].nil?
-                @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").where("profiles.state LIKE ?", "%#{params[:search_state]}").order(last_sign_in_at: :desc)
-              else
-                 @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.city LIKE ?", "%#{params[:search_city]}").order(last_sign_in_at: :desc)
-              end  
-            else 
-              if !params[:search_state].nil?
-                @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%").where("profiles.state LIKE ?", "%#{params[:search_state]}").order(last_sign_in_at: :desc)
-              else
-                @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%").order(last_sign_in_at: :desc)
-              end  
-            end
-          end
-        else 
-          if !params[:search_city].nil?
-            if !params[:search_state].nil?
-              @users = @users.where("profiles.city LIKE ?", "%#{params[:search_city]}").where("profiles.state LIKE ?", "%#{params[:search_state]}").order(last_sign_in_at: :desc)
-            else  
-              @users = @users.where("profiles.city LIKE ?", "%#{params[:search_city]}").order(last_sign_in_at: :desc)
-            end
-          else
-            if !params[:search_state].nil?
-              @users = @users.where("profiles.state LIKE ?", "%#{params[:search_state]}").order(last_sign_in_at: :desc)
-            else 
-              @users = @users.where("profiles.state LIKE ?", "%#{current_user.profile.state}").where("profiles.looking_for LIKE ?", "%#{current_user.profile.primary_instrument}").order(last_sign_in_at: :desc)
-            end
-          end
-        end
+         @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
       end
-    end 
-  end 
+      if !params[:search_name].nil? 
+        @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+      end
+      if !params[:search_city].nil? 
+        @users = @users.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+      end
+      if !params[:search_state].nil? 
+        @users = @users.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+      end
+    else 
+      if !params[:search_instrument].nil? 
+        @profiles = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+      end
+      if !params[:search_name].nil? 
+        @profiles = @profiles.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+      end
+      if !params[:search_city].nil? 
+        @profiles = @profiles.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+      end
+      if !params[:search_state].nil? 
+        @profiles = @profiles.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+      end
+    end
+  end
 
-  # GET /profiles/1
-  # GET /profiles/1.json
   def show
 
   end
-
-  # GET /profiles/new
+  
   def new
       @profile = Profile.new
   end
 
-  # GET /profiles/1/edit
   def edit
     @profile = current_user.profile
   end
 
-  # POST /profiles
-  # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
     @profile.user = @user 
