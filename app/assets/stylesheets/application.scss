@@ -95,6 +95,18 @@ a:hover {
 .block {
 	display: block;
 }
+.border {
+	border: 1px solid #e2e2e2 !important;
+}
+.btn-custom {
+	padding: 8px 12px;  
+	font-weight: bold;  
+	font-size: 14px;
+	background-color: #cccccc;
+}
+.btn-custom:hover {
+	background-color: #bbbaba;
+}
 .btn-purple {
 	background-color: $nav; 
 	color: white !important;
@@ -232,6 +244,18 @@ a:hover {
 	bottom: 0px; 
 	z-index: 5px;
 }
+.modal-content {
+	background-color: white;
+	top: 50px;
+}
+.modal-header {
+	border-radius: 5px 5px 0px 0px;
+	background-color: #e2e2e2;
+}
+.modal-footer {
+	background-color: #e2e2e2;
+	border-radius: 0px 0px 5px 5px;
+}
 .navbar {
 	padding: 10px; 
 	position: fixed;
@@ -348,6 +372,9 @@ nav {
  	}
  	.message_index_text {
 		font-size: 16px;
+	}
+	.modal-content {
+		top: 0px;
 	}
  	.profile_pic	{ 
 		width:70%;

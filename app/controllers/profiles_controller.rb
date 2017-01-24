@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-
+    @user = @profile.user
   end
   
   def new

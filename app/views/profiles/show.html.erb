@@ -34,10 +34,11 @@
 		<p><b>Bio: </b><%= @profile.bio %></p>
 		<br />
 		<% if current_user.profile != @profile %> 
-			<%= link_to "Message", new_conversation_path(:user => @profile.user.id), class: 'btn btn-purple' %>
+			<button class="btn btn-purple" data-toggle="modal" data-target="#mynewmessage">Message</button>
 		<% end %> 
 		<br /><br /><br /><br /><br />
 	</div>
+
 	<div class="col-sm-4 col-sm-push-2 col-md-5 col-md-push-2 col-lg-5 col-lg-pus-0 col-xs-10 col-xs-push-1 sidebar">
 		<h3>Uploads</h3>
 		<% if !@profile.audioclip.blank? %>
@@ -74,5 +75,45 @@
 			</div> 	
 		<% end %> 
 	</div>
+
+	<div class="modal fade" id="mynewmessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	    <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+
+	         	<div class="modal-header">
+	            	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            	<h4 class="modal-title" id="myModalLabel">Message to <%= @profile.name %></h4>
+	            </div>
+	            <div class="modal-body">
+	                <%= form_tag conversations_path, method: :post do %>
+						<%= hidden_field_tag(:user, "#{@user.id}") %>
+					  	<%= hidden_field_tag(:subject, "#{current_user.profile.name} and #{@user.profile.name}") %>
+					  <div>
+					  	<br />
+					 	<%= text_area_tag :body, nil, class: 'text_area border' %>
+					 	<br />
+					 </div>
+					 <br />
+	          </div>
+	          <div class="modal-footer">
+	            <button type="button" class="btn btn-custom" data-dismiss="modal" id=mynewpostclose>Close</button>
+	            <%= submit_tag "Send", class: 'btn btn-purple' %>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+		<% end %>
+
 </div>
+
+
+
+
+
+<script>
+	function modal() {
+		var modal = document.getElementById('modal');
+		modal.style.display = "block";
+	}
+</script>
 
