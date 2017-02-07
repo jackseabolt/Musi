@@ -31,7 +31,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	       <% if user_signed_in? %>
-	        <li><%= link_to "Home", profiles_path %></li>
+	        <li><%= link_tag "Home", profiles_path %></li>
 	        	<% if current_user.profile.nil? %>
 	        		<li><%= link_to "Create Profile", new_profile_path(current_user) %> </li>
 	        	<% else %>

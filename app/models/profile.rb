@@ -12,7 +12,7 @@ class Profile < ApplicationRecord
 	validates :state, :presence => true 
 	validates :image, :presence => true 
 
-	has_attached_file :image, styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+	has_attached_file :image, styles: { normal: "500x500#", medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png", default_style: :normal
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_attached_file :audioclip, { validate_media_type: false } 
@@ -23,7 +23,6 @@ class Profile < ApplicationRecord
 
   has_attached_file :audioclip3, { validate_media_type: false } 
   #validates_attachment_content_type :audioclip3, content_type: ['audio/mp3','audio/mpeg']
-
 
   has_many :genres_profiles
 	has_many :genres, :through => :genres_profiles
@@ -40,7 +39,6 @@ class Profile < ApplicationRecord
   		"#{self.third_instrument}.png"
   	end 
 
-  
 end
 
 
