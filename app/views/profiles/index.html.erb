@@ -32,10 +32,10 @@
             <div class="col-sm-12">
               <a href="/profiles/<%= profile.id %>">
                 <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
-                  <div class="col-xs-6">
+                  <div class="col-sm-6">
                       <%= image_tag profile.image.url(:normal), class: "index_image" %>
                   </div>
-                   <div class="col-sm-6 col-push-sm-6">
+                   <div class="col-sm-6">
                     <p class="index_info_name"><b><%= profile.name %></b><br /></p>
                       <div class="years_spent_playing_container_index">
                           <p><%= profile.years_spent_playing %></p>
@@ -72,7 +72,7 @@
                   <div class="col-sm-6">
                       <%= image_tag u.profile.image.url(:normal), class: "index_image" %>
                   </div>
-                  <div class="col-sm-6 col-push-sm-6">
+                  <div class="col-sm-6">
                     <p class="index_info_name"><b><%= u.profile.name %></p>
                     <div class="years_spent_playing_container_index">
                       <p><%= u.profile.years_spent_playing %></p>
@@ -107,10 +107,10 @@
             <div class="col-sm-12">
               <a href="/profiles/<%= profile.id %>">
                 <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
-                  <div class="col-xs-6">
+                  <div class="col-sm-6">
                       <%= image_tag profile.image.url(:normal), class: "index_image" %>
                   </div>
-                   <div class="col-sm-6 col-push-sm-6">
+                   <div class="col-sm-6">
                     <p class="index_info_name"><b><%= profile.name %></b><br /></p>
                       <div class="years_spent_playing_container_index">
                           <p><%= profile.years_spent_playing %></p>
