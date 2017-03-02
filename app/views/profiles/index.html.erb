@@ -58,7 +58,7 @@
                   <% if !u.profile.image.file? %>
                       <p>No Image</p>
                   <% else %> 
-                    <%= image_tag u.profile.image.url(:medium), class: "index_image" %>
+                    <%= image_tag u.profile.image.url(:normal), class: "index_image" %>
                   <% end %>
                 </div>
                 <div class="col-sm-6 col-push-sm-6">
