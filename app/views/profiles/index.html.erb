@@ -31,11 +31,7 @@
             <a href="/profiles/<%= profile.id %>">
               <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
                 <div class="col-xs-6">
-                    <% if !profile.image.nil? %>
-                      <p>No Image</p>
-                  <% else %> 
                     <%= image_tag profile.image.url(:normal), class: "index_image" %>
-                  <% end %>
                 </div>
                  <div class="col-sm-6 col-push-sm-6">
                   <p class="index_info_name"><b><%= profile.name %></b><br /></p>
@@ -74,11 +70,9 @@
             <a href="/profiles/<%= u.profile.id %>">
               <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
                 <div class="col-sm-6">
-                  <% if !u.profile.image.nil? %>
-                      <p>No Image</p>
-                  <% else %> 
+                
                     <%= image_tag u.profile.image.url(:normal), class: "index_image" %>
-                  <% end %>
+                
                 </div>
                 <div class="col-sm-6 col-push-sm-6">
                   <p class="index_info_name"><b><%= u.profile.name %></p>
