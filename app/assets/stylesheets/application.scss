@@ -148,6 +148,12 @@ a:hover {
 .index_image {
 	width: 100%;
 }
+.index_info {
+	color: #5e5e5e;
+}
+.index_info_name {
+	color: #353535;
+}
 .info_container { 
 	display: inline-block;
  }
@@ -155,6 +161,13 @@ a:hover {
 	height: 30px;
 	margin-top: 20px;
 	margin-right: 8px;
+}
+.instrument_image_index {
+	height: 30px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 8px;
+	margin-left: 8px;
 }
 .logo { 
 	width: 50px;
@@ -181,6 +194,23 @@ a:hover {
 	display: inline-block;
 	text-align: center;
 	box-shadow: 0px 0px 10px #c0c0c0;
+	p {
+		position: relative;
+		top: 8px;
+		color: white;
+		font-weight: bold;
+		font-size: 14px;
+	}
+}
+.years_spent_playing_container_index {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background-color: grey;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	top: -10px;
 	p {
 		position: relative;
 		top: 8px;
