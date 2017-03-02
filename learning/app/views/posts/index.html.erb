@@ -1,0 +1,14 @@
+<h1>Posts#index</h1>
+
+
+<% @posts.each do |p| %>
+	<div>
+		<%= p.title %>
+		<%= p.author %>
+		<%= p.content %>
+		<%= link_to 'Show', p %>
+		<%= link_to "Delete", p, method: :delete, data: {confirm: "Are you sure?"} %>
+	<% end %>
+	</div>
+<%= link_to "New Post", new_post_path %> 
+
