@@ -24,89 +24,120 @@
   </div>
   <div class='col-sm-8 col-sm-push-0'>
     <br />
-    <% if current_user.profile.nil? %>
-     <% @profiles.each do |profile| %>
-        <% if profile.status=="Looking" %>
-          <div class="col-sm-12">
-            <a href="/profiles/<%= profile.id %>">
-              <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
-                <div class="col-xs-6">
-                    <%= image_tag profile.image.url(:normal), class: "index_image" %>
+    <% if user_signed_in? %> 
+      <% if current_user.profile.nil? %>
+       <% @profiles.each do |profile| %>
+          <% if profile.status=="Looking" %>
+            <div class="col-sm-12">
+              <a href="/profiles/<%= profile.id %>">
+                <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
+                  <div class="col-xs-6">
+                      <%= image_tag profile.image.url(:normal), class: "index_image" %>
+                  </div>
+                   <div class="col-sm-6 col-push-sm-6">
+                    <p class="index_info_name"><b><%= profile.name %></b><br /></p>
+                      <div class="years_spent_playing_container_index">
+                          <p><%= profile.years_spent_playing %></p>
+                      </div>
+                      <div class="info_container">
+                        <%= image_tag profile.instrument_image, class: "instrument_image_index" %> 
+                      </div>
+                      <% if !profile.second_instrument.empty? %>
+                        <div class="info_container">
+                          <%= image_tag profile.second_instrument_image, class: "instrument_image_index" %> 
+                        </div>  
+                      <% end %> 
+                      <% if !profile.third_instrument.empty? %>
+                        <div class="info_container">
+                          <%= image_tag profile.third_instrument_image, class: "instrument_image_index" %> 
+                        </div>  
+                      <% end %> 
+                    <p class="index_info">
+                    <b>Instrument: </b><%= profile.primary_instrument %><br />
+                    <b>Looking For: </b><%= profile.looking_for %><br />
+                    <b>City: </b><%= profile.city %><br />
+                    <b>State: </b><%= profile.state %><br /></p>
+                  </div>
                 </div>
-                 <div class="col-sm-6 col-push-sm-6">
-                  <p class="index_info_name"><b><%= profile.name %></b><br /></p>
-
-                              <div class="years_spent_playing_container_index">
-                                <p><%= profile.years_spent_playing %></p>
-                              </div>
-                              <div class="info_container">
-                               <%= image_tag profile.instrument_image, class: "instrument_image_index" %> 
-                              </div>
-                              <% if !profile.second_instrument.empty? %>
-                                <div class="info_container">
-                                    <%= image_tag profile.second_instrument_image, class: "instrument_image_index" %> 
-                                </div>  
-                              <% end %> 
-                              <% if !profile.third_instrument.empty? %>
-                                <div class="info_container">
-                                    <%= image_tag profile.third_instrument_image, class: "instrument_image_index" %> 
-                                </div>  
-                              <% end %> 
-
-                  <p class="index_info">
-                  <b>Instrument: </b><%= profile.primary_instrument %><br />
-                  <b>Looking For: </b><%= profile.looking_for %><br />
-                  <b>City: </b><%= profile.city %><br />
-                  <b>State: </b><%= profile.state %><br /></p>
+              </a>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %> 
+        <% @users.each do |u| %>
+            <div class="col-sm-12">
+              <a href="/profiles/<%= u.profile.id %>">
+                <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
+                  <div class="col-sm-6">
+                      <%= image_tag u.profile.image.url(:normal), class: "index_image" %>
+                  </div>
+                  <div class="col-sm-6 col-push-sm-6">
+                    <p class="index_info_name"><b><%= u.profile.name %></p>
+                    <div class="years_spent_playing_container_index">
+                      <p><%= u.profile.years_spent_playing %></p>
+                    </div>
+                    <div class="info_container">
+                      <%= image_tag u.profile.instrument_image, class: "instrument_image_index" %> 
+                    </div>
+                    <% if !u.profile.second_instrument.empty? %>
+                      <div class="info_container">
+                        <%= image_tag u.profile.second_instrument_image, class: "instrument_image_index" %> 
+                      </div>  
+                    <% end %> 
+                    <% if !u.profile.third_instrument.empty? %>
+                      <div class="info_container">
+                        <%= image_tag u.profile.third_instrument_image, class: "instrument_image_index" %> 
+                      </div>  
+                    <% end %> 
+                    <p class="index_info">
+                    <b>Looking For: </b><%= u.profile.looking_for %><br />
+                    <b>City: </b><%= u.profile.city %><br />
+                    <b>State: </b><%= u.profile.state %><br />
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          </div>
+               </a>    
+            </div>    
         <% end %>
       <% end %>
-    <% else %> 
-      <% @users.each do |u| %>
-          <div class="col-sm-12">
-            <a href="/profiles/<%= u.profile.id %>">
-              <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
-                <div class="col-sm-6">
-                
-                    <%= image_tag u.profile.image.url(:normal), class: "index_image" %>
-                
+    <% else %>
+    <% @profiles.each do |profile| %>
+          <% if profile.status=="Looking" %>
+            <div class="col-sm-12">
+              <a href="/profiles/<%= profile.id %>">
+                <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2 index_profile">
+                  <div class="col-xs-6">
+                      <%= image_tag profile.image.url(:normal), class: "index_image" %>
+                  </div>
+                   <div class="col-sm-6 col-push-sm-6">
+                    <p class="index_info_name"><b><%= profile.name %></b><br /></p>
+                      <div class="years_spent_playing_container_index">
+                          <p><%= profile.years_spent_playing %></p>
+                      </div>
+                      <div class="info_container">
+                        <%= image_tag profile.instrument_image, class: "instrument_image_index" %> 
+                      </div>
+                      <% if !profile.second_instrument.empty? %>
+                        <div class="info_container">
+                          <%= image_tag profile.second_instrument_image, class: "instrument_image_index" %> 
+                        </div>  
+                      <% end %> 
+                      <% if !profile.third_instrument.empty? %>
+                        <div class="info_container">
+                          <%= image_tag profile.third_instrument_image, class: "instrument_image_index" %> 
+                        </div>  
+                      <% end %> 
+                    <p class="index_info">
+                    <b>Instrument: </b><%= profile.primary_instrument %><br />
+                    <b>Looking For: </b><%= profile.looking_for %><br />
+                    <b>City: </b><%= profile.city %><br />
+                    <b>State: </b><%= profile.state %><br /></p>
+                  </div>
                 </div>
-                <div class="col-sm-6 col-push-sm-6">
-                  <p class="index_info_name"><b><%= u.profile.name %></p>
-                             
-
-
-                      
-                              <div class="years_spent_playing_container_index">
-                                <p><%= u.profile.years_spent_playing %></p>
-                              </div>
-                              <div class="info_container">
-                               <%= image_tag u.profile.instrument_image, class: "instrument_image_index" %> 
-                              </div>
-                              <% if !u.profile.second_instrument.empty? %>
-                                <div class="info_container">
-                                    <%= image_tag u.profile.second_instrument_image, class: "instrument_image_index" %> 
-                                </div>  
-                              <% end %> 
-                              <% if !u.profile.third_instrument.empty? %>
-                                <div class="info_container">
-                                    <%= image_tag u.profile.third_instrument_image, class: "instrument_image_index" %> 
-                                </div>  
-                              <% end %> 
-
-                  <p class="index_info">
-                  <b>Looking For: </b><%= u.profile.looking_for %><br />
-                  <b>City: </b><%= u.profile.city %><br />
-                  <b>State: </b><%= u.profile.state %><br />
-                  </p>
-                </div>
-              </div>
-             </a>    
-          </div>    
-      <% end %>
+              </a>
+            </div>
+          <% end %>
+        <% end %>
     <% end %>
     <div class="col-xs-10 col-xs-push-1 col-sm-9 col-sm-push-2">
       <%= will_paginate @users, class: "apple_pagination" %>

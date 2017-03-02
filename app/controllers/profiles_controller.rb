@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show, :new, :edit, :destroy, :create]
   before_action :set_user
 
   # GET /profiles
@@ -9,9 +9,37 @@ class ProfilesController < ApplicationController
     #profiles used for users who lack profiles
     @profiles = Profile.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 4)
     #users used for users who have added a profile 
-    @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id).paginate(:page => params[:page], :per_page => 4) 
-    if current_user.profile.nil? 
-       if !params[:search_instrument].nil? 
+    if user_signed_in?
+      @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id).paginate(:page => params[:page], :per_page => 4) 
+      if current_user.profile.nil? 
+        if !params[:search_instrument].nil? 
+          @profiles = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+        end
+        if !params[:search_name].nil? 
+          @profiles = @profiles.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+        end
+        if !params[:search_city].nil? 
+          @profiles = @profiles.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+        end
+        if !params[:search_state].nil? 
+          @profiles = @profiles.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+        end
+      else 
+         if !params[:search_instrument].nil? 
+           @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+        end
+        if !params[:search_name].nil? 
+          @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+        end
+        if !params[:search_city].nil? 
+          @users = @users.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+        end
+        if !params[:search_state].nil? 
+          @users = @users.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+        end
+      end
+    else 
+      if !params[:search_instrument].nil? 
         @profiles = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
       end
       if !params[:search_name].nil? 
@@ -22,19 +50,6 @@ class ProfilesController < ApplicationController
       end
       if !params[:search_state].nil? 
         @profiles = @profiles.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
-      end
-    else 
-       if !params[:search_instrument].nil? 
-         @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
-      end
-      if !params[:search_name].nil? 
-        @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
-      end
-      if !params[:search_city].nil? 
-        @users = @users.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
-      end
-      if !params[:search_state].nil? 
-        @users = @users.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
       end
     end
   end
