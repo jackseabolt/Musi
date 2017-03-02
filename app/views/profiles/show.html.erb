@@ -1,6 +1,6 @@
 <div class="row profile_row">
 	<div class="col-sm-4 col-sm-push-1 col-xs-10 col-xs-push-1">
-		<%= image_tag @profile.image.url(:medium), class: "block profile_pic" %>
+		<%= image_tag @profile.image.url(:normal), class: "block profile_pic" %>
 		<% if !@profile.years_spent_playing.nil? %>
 			<div class="years_spent_playing_container">
 				<p><%= @profile.years_spent_playing %></p>
