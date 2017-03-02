@@ -362,11 +362,11 @@ nav {
 	height: 100px;
 }
 .top {
-	margin-top: 100px;
+	margin-top: 180px;
 }
 .top_alt_page {
-	margin-top: 100px;
-}
+	margin-top: 180px;
+} 
 .upload_display {
 	background-color: $hover;
 	border-radius: 5px; 
@@ -389,6 +389,16 @@ nav {
 .will_paginate:hover {
 	background-color: none !important;
 }
+@media screen and (max-width:1400px){
+	.top {
+		margin-top: 100px; 
+	}
+	.top_alt_page {
+	margin-top: 100px;
+}
+}
+
+
 @media screen and (max-width:767px){
 	.index_image {
 		margin-bottom: 15px;
