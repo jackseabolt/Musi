@@ -13,43 +13,43 @@ class ProfilesController < ApplicationController
       @users = User.joins(:profile).includes(:profile).where(profiles: {status: "Looking"}).order(last_sign_in_at: :desc).where.not(id: current_user.id).paginate(:page => params[:page], :per_page => 4) 
       if current_user.profile.nil? 
         if !params[:search_instrument].nil? 
-          @profiles = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+          @profiles = @profiles.where("LOWER(profiles.primary_instrument) LIKE ?", "%#{params[:search_instrument].downcase}%")
         end
         if !params[:search_name].nil? 
-          @profiles = @profiles.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+          @profiles = @profiles.where("LOWER(profiles.name) LIKE ?", "%#{params[:search_name].downcase}%")
         end
         if !params[:search_city].nil? 
-          @profiles = @profiles.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+          @profiles = @profiles.where("LOWER(profiles.city) LIKE ?", "%#{params[:search_city].downcase}%")
         end
         if !params[:search_state].nil? 
-          @profiles = @profiles.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+          @profiles = @profiles.where("LOWER(profiles.state) LIKE ?", "%#{params[:search_state].downcase}%")
         end
       else 
          if !params[:search_instrument].nil? 
-           @users = @users.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+           @users = @users.where("LOWER(profiles.primary_instrument) LIKE ?", "%#{params[:search_instrument].downcase}%")
         end
         if !params[:search_name].nil? 
-          @users = @users.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+          @users = @users.where("LOWER(profiles.name) LIKE ?", "%#{params[:search_name].downcase}%")
         end
         if !params[:search_city].nil? 
-          @users = @users.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+          @users = @users.where("LOWER(profiles.city) LIKE ?", "%#{params[:search_city].downcase}%")
         end
         if !params[:search_state].nil? 
-          @users = @users.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+          @users = @users.where("LOWER(profiles.state) LIKE ?", "%#{params[:search_state].downcase}%")
         end
       end
     else 
       if !params[:search_instrument].nil? 
-        @profiles = @profiles.where("profiles.primary_instrument LIKE ?", "%#{params[:search_instrument]}%")
+        @profiles = @profiles.where("LOWER(profiles.primary_instrument) LIKE ?", "%#{params[:search_instrument].downcase}%")
       end
       if !params[:search_name].nil? 
-        @profiles = @profiles.where("profiles.name LIKE ?", "%#{params[:search_name]}%")
+        @profiles = @profiles.where("LOWER(profiles.name) LIKE ?", "%#{params[:search_name].downcase}%")
       end
       if !params[:search_city].nil? 
-        @profiles = @profiles.where("profiles.city LIKE ?", "%#{params[:search_city]}%")
+        @profiles = @profiles.where("LOWER(profiles.city) LIKE ?", "%#{params[:search_city].downcase}%")
       end
       if !params[:search_state].nil? 
-        @profiles = @profiles.where("profiles.state LIKE ?", "%#{params[:search_state]}%")
+        @profiles = @profiles.where("LOWER(profiles.state) LIKE ?", "%#{params[:search_state].downcase}%")
       end
     end
   end
