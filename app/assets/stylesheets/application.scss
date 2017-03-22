@@ -22,13 +22,6 @@ $link: #5c5c5c;
 
 
 
-#error_explanation {
-	background-color: none !important;
-}
-
-
-
-
 
 body { 
   background: url(crowd.jpg) no-repeat center center fixed; 
@@ -86,6 +79,9 @@ body {
 	h4 {
 		color: white;
 	}
+}
+.grey {
+	color: grey; 
 }
 .spacer {
 	height: 60px !important; 

@@ -102,7 +102,7 @@
           <% end %>
         <% end %>
       <% else %>
-      <% @profiles.each do |profile| %>
+      <% @profiles.each do |profile| %> <!--not logged in-->
             <% if profile.status=="Looking" %>
               <div class="col-sm-12">
                 <a href="/profiles/<%= profile.id %>">
