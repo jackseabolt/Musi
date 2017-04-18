@@ -1,0 +1,17 @@
+<% if @conversation.receipts_for(current_user).message.sender.profile.name==current_user.profile.name %>
+		<div class="row white_background">	
+			<div class="col-xs-6 col-xs-push-4 message_receiver"> 					
+					<%= image_tag @conversation.receipts_for(current_user).message.sender.profile.image, class: 'message_image' %> 
+					<h5><%= @conversation.receipts_for(current_user).message.sender.profile.name %></h5> 
+					<p><%= @conversation.receipts_for(current_user).message.body %></p> 
+				</div>
+			</div>	
+		<% else %>
+			<div class="row white_background">	
+				<div class="col-xs-6 col-xs-push-2 message_sender">  				
+					<%= image_tag @conversation.receipts_for(current_user).message.sender.profile.image, class: 'message_image' %> 
+					<h5><%= @conversation.receipts_for(current_user).message.sender.profile.name %></h5> 
+					<p><%= @conversation.receipts_for(current_user).message.body %></p> 
+				</div>
+			</div> 
+		<% end %> 
