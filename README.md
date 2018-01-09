@@ -11,7 +11,7 @@ For local use
 
 ```bash
 # Clone repository
-git clone https://github.com/jackseabolt/musi.git
+git clone https://github.com/jackseabolt/Musi.git
 
 # Change directory
 cd musi
