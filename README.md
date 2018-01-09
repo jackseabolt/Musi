@@ -1,5 +1,5 @@
 <p align="center"><img src="/app/assets/images/musilogopurple.png" height="120" /></p>
-<p><em>This document provides general information on the Musi Ruby on Rails application.</em></p>
+<p calign="center"><em>This document provides general information on the Musi Ruby on Rails application.</em></p>
 
 
 Why Musi
