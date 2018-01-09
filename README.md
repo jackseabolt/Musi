@@ -1,24 +1,26 @@
-# README
+<h1 align="center">Musi</h1>
+<p><em>This document provides general information on the Musi Ruby on Rails application.</em></p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Why Musi
+-------------
+Do you play an instrument? Musi helps local musicians find each other. Simply fill out a profile and local musicians will show up in your feed. You can upload music you've recorded, images of yourself and more!
 
-* Ruby version
+For local use
+--------
 
-* System dependencies
+```bash
+# Clone repository
+git clone https://github.com/jackseabolt/musi.git
 
-* Configuration
+# Change directory
+cd musi
 
-* Database creation
+# Install NPM dependencies
+bundle install
 
-* Database initialization
+# Start the server
+rails s
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Go to localhost:3000
+```
