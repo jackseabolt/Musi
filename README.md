@@ -4,7 +4,7 @@
 
 Why Musi
 -------------
-Do you play an instrument? Musi helps local musicians find each other. Simply fill out a profile and local musicians will show up in your feed. You can upload music you've recorded, images of yourself and more!
+Do you play an instrument? Musi helps local musicians find each other. Simply fill out a profile and local musicians will with you in your feed. Users can upload music you've recorded, images of yourself and more!
 
 For local use
 --------
