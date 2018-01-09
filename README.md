@@ -1,3 +1,4 @@
+<p align="center"><img src="/app/assets/images/musilogopurple.jpg" height="120" /></p>
 <h1 align="center">Musi</h1>
 <p><em>This document provides general information on the Musi Ruby on Rails application.</em></p>
 
